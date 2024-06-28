@@ -63,6 +63,6 @@ jobs:
         env:
           INPUT_URL: ${{ inputs.input_url }}
         run: |
-          cd spes_autobuild
+          cd polyx_autobuild
           ./polyxCN.sh "$INPUT_URL"
       
