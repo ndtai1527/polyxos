@@ -1,4 +1,4 @@
-name: Build for POLYX
+name: Polyx Auto Build
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
         required: true
 
 jobs:
-  Let_him_cook_broooo:
+  PolyxOS_ing:
     runs-on: ubuntu-latest
     steps:
       - name: Clean Junks
