@@ -35,7 +35,7 @@ jobs:
       - name: Checkout WORKSPACE
         run: |
           
-          git clone https://${{ secrets.PRIVATEP_TOKEN }}@github.com/ndtai1527/polyx_autobuild.git
+          git clone -b preview https://${{ secrets.PRIVATEP_TOKEN }}@github.com/ndtai1527/polyx_autobuild.git
 
       - name: Set up Time
         run: |
