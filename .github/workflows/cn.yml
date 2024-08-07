@@ -1,4 +1,4 @@
-name: Polyx Auto Build (CN) ( TEST )
+name: Polyx Auto Build (CN) 
 
 on:
   workflow_dispatch:
