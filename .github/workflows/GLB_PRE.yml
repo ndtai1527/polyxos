@@ -65,5 +65,5 @@ jobs:
           INPUT_URL: ${{ inputs.input_url }}
         run: |
           cd polyx_autobuild
-          ./polyxGlb.sh "$INPUT_URL"
+          ./vosglb.sh "$INPUT_URL"
       
