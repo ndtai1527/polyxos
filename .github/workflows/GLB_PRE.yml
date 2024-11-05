@@ -32,23 +32,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@main
 
+      - name: Install Stuff
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y aria2 git rclone sshpass wget python3 python3-pip dialog libgtk-3-dev aapt busybox zip unzip p7zip-full zipalign zstd bc android-sdk-libsparse-utils xmlstarlet
+          sudo pip3 install ConfigObj
+          sudo pip3 install telebot
+
+          
       - name: Checkout WORKSPACE
         run: |
-          
           git clone -b preview https://${{ secrets.PRIVATEP_TOKEN }}@github.com/ndtai1527/polyx_autobuild.git
-
+          
       - name: Set up Time
         run: |
           echo "Setting Vienam timezone"
           sudo timedatectl set-timezone Asia/Ho_Chi_Minh
 
-      - name: Install Stuff
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y aria2 rclone sshpass wget python3 python3-pip dialog libgtk-3-dev aapt busybox zip unzip p7zip-full zipalign zstd bc android-sdk-libsparse-utils xmlstarlet
-          sudo pip3 install ConfigObj
-          sudo pip3 install telebot
-          
+
       - name: Install OpenJDK
         uses: actions/setup-java@v4
         with:
