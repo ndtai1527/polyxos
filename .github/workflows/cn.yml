@@ -35,7 +35,7 @@ jobs:
       - name: Checkout WORKSPACE
         run: |
           
-          git clone https://${{ secrets.PRIVATEP_TOKEN }}@github.com/ndtai1527/polyx_autobuild.git
+          git clone https://${{ secrets.PRIVATEP_TOKEN }}@github.com/ndtai1527/maianh_hybird_tool.git
 
       - name: Set up Time
         run: |
@@ -58,13 +58,13 @@ jobs:
           
       - name: ch mod
         run: |
-          cd polyx_autobuild
+          cd maianh_hybird_tool
           sudo chmod 777 -R *
 
       - name: Cooking
         env:
           INPUT_URL: ${{ inputs.input_url }}
         run: |
-          cd polyx_autobuild
-          ./polyxCN.sh "$INPUT_URL"
+          cd maianh_hybird_tool
+          ./caramelCN.sh "$INPUT_URL"
       
