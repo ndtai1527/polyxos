@@ -35,7 +35,7 @@ jobs:
       - name: Checkout WORKSPACE
         run: |
           
-          git clone https://${{ secrets.PRIVATEHMA_TOKEN }}@github.com/Hma1984/maianh_hybird_tool.git
+          git clone -b hellohyper https://${{ secrets.PRIVATEHMA_TOKEN }}@github.com/Hma1984/maianh_hybird_tool.git
 
       - name: Set up Time
         run: |
