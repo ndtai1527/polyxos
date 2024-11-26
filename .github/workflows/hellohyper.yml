@@ -66,5 +66,5 @@ jobs:
           INPUT_URL: ${{ inputs.input_url }}
         run: |
           cd maianh_hybird_tool
-          ./caramelCN.sh "$INPUT_URL"
+          sudo bash caramelCN.sh "$INPUT_URL"
       
