@@ -57,13 +57,13 @@ jobs:
           
       - name: ch mod
         run: |
-          cd maianh_hybird_tool
+          cd xiaomi_starx_hybrid
           sudo chmod 777 -R *
 
       - name: Cooking
         env:
           INPUT_URL: ${{ inputs.input_url }}
         run: |
-          cd maianh_hybird_tool
+          cd xiaomi_starx_hybrid
           sudo bash caramelGB.sh "$INPUT_URL"
       
