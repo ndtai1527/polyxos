@@ -35,7 +35,7 @@ jobs:
       - name: Checkout WORKSPACE
         run: |
           
-          git clone -b beta https://${{ secrets.PRIVATEHMA_TOKEN }}@github.com/ndtai1527/xiaomi_starx_hybrid.git 
+          git clone https://${{ secrets.PRIVATEHMA_TOKEN }}@github.com/ndtai1527/xiaomi_starx_hybrid.git 
 
       - name: Set up Time
         run: |
