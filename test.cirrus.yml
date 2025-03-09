@@ -47,7 +47,7 @@ task:
 
   # Checkout code and workspace
   checkout_script:
-    - git clone https://github.com/${CIRRUS_REPO_FULL_NAME}.giâ
+    - git clone https://github.com/${CIRRUS_REPO_FULL_NAME}.git
     # You'll need to set up a Cirrus CI encrypted variable for PRIVATEHMA_TOKEN
     - git clone https://${PRIVATEHMA_TOKEN}@github.com/ndtai1527/xiaomi_starx_hybrid.git
 
