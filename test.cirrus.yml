@@ -1,6 +1,7 @@
+# StarX Auto Build Stable (GLB) Cirrus CI Configuration
 task:
   name: StarX_Auto_Build_Stable_GLB
-  # Only manual trigger with input URL
+  # Manual trigger configuration
   trigger_type: manual
   environment:
     # Define environment variables
@@ -47,7 +48,7 @@ task:
 
   # Checkout code and workspace
   checkout_script:
-    - git clone https://github.com/${CIRRUS_REPO_FULL_NAME}.git
+    - git clone https://github.com/${CIRRUS_REPO_FULL_NAME}.git .
     # You'll need to set up a Cirrus CI encrypted variable for PRIVATEHMA_TOKEN
     - git clone https://${PRIVATEHMA_TOKEN}@github.com/ndtai1527/xiaomi_starx_hybrid.git
 
@@ -59,9 +60,4 @@ task:
   # Run the build process
   build_script:
     - cd xiaomi_starx_hybrid
-    - bash caramelGB.sh "$INPUT_URL"
-
-  # Optional: Add artifact upload if needed
-  # artifacts:
-  #   name: build-outputs
-  #   path: xiaomi_starx_hybrid/output/**
+    - bash caramelGB.sh "${INPUT_URL}"
