@@ -59,13 +59,13 @@ jobs:
           
       - name: Giving Premission
         run: |
-          cd maianh_hybird_tool
+          cd xiaomi_starx_hybrid
           sudo chmod 777 -R *
 
       - name: Working...
         env:
           INPUT_URL: ${{ inputs.input_url }}
         run: |
-          cd maianh_hybird_tool
+          cd xiaomi_starx_hybrid
           sudo bash build.sh "$INPUT_URL"
       
