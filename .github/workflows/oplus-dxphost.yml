@@ -1,0 +1,71 @@
+name: OPlus Auto Build ( Self Hosted )
+
+on:
+  workflow_dispatch:
+    inputs:
+      input_url:
+        description: 'URL of the file to build'
+        required: true
+
+jobs:
+  Build_Status:
+    runs-on: self-hosted
+    steps:
+      - name: Clean All Junk,App
+        run: |
+          docker rmi `docker images -q` || true
+          sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d || true
+          sudo apt -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell mysql* php* || true
+          sudo apt -y autoremove --purge || true
+          sudo apt -y autoclean || true
+          sudo apt clean || true
+
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          swap-size-mb: 1024
+          root-reserve-mb: 512
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Checkout WORKSPACE
+        run: |
+          
+          git clone https://${{ secrets.PRIVATEO_TOKEN }}@github.com/ndtai1527/oplus-autobuild.git
+
+      - name: Set up Time
+        run: |
+          echo "Setting Vienam timezone"
+          sudo timedatectl set-timezone Asia/Ho_Chi_Minh
+
+      - name: Install Stuff
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y aria2 curl rclone sshpass python-is-python3 wget python3 lz4 xz-utils device-tree-compiler zlib1g-dev gcc g++ libc6 libstdc++6 python3-pip dialog libgtk-3-dev aapt busybox zip erofs-utils unzip p7zip-full zipalign zstd bc android-sdk-libsparse-utils xmlstarlet
+          sudo pip3 install ConfigObj
+          sudo pip3 install telebot
+          sudo pip3 install setuptools
+          
+          
+      - name: Install OpenJDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          
+      - name: Giving Premission
+        run: |
+          cd oplus-autobuild
+          sudo chmod 777 -R *
+
+      - name: Working...
+        env:
+          INPUT_URL: ${{ inputs.input_url }}
+        run: |
+          cd oplus-autobuild
+          sudo bash build.sh "$INPUT_URL"
+      
