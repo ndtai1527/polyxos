@@ -1,4 +1,4 @@
-name: Tung tung tung sahur
+name: ColorNT autobuild ( BETA )
 
 on:
   workflow_dispatch:
