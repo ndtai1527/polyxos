@@ -38,7 +38,7 @@ jobs:
       - name: Checkout WORKSPACE
         run: |
           
-          git clone https://${{ secrets.PRIVATEP_TOKEN }}@github.com/ndtai1527/XimiHarem.git
+          git clone -b old https://${{ secrets.PRIVATEP_TOKEN }}@github.com/ndtai1527/XimiHarem.git
 
       - name: Set up Time
         run: |
