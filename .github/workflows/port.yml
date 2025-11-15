@@ -48,7 +48,7 @@ jobs:
       - name: Install Stuff
         run: |
           sudo apt-get update
-          sudo apt-get install -y aria2 rclone python-is-python3 wget python3 lz4 python3-pip dialog aapt busybox zip erofs-utils unzip p7zip-full zipalign zstd bc xmlstarlet
+          sudo apt-get install -y aria2 rclone python-is-python3 wget python3 lz4 python3-pip dialog aapt busybox zip erofs-utils unzip p7zip-full zipalign zstd bc openssl python-protobuf python xmlstarlet
           sudo pip3 install ConfigObj
           sudo pip3 install telebot
           sudo pip3 install setuptools
