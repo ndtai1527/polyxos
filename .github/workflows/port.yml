@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       input_base_url:
-        description: 'URL of the file to build'
+        description: 'Base ROM URL to build'
         required: true
       input_port_url:
-        description: 'URL of the file to build'
-        required: true      
+        description: 'Port ROM URL to build'
+        required: true
 
 jobs:
   Build_Status:
@@ -17,7 +17,7 @@ jobs:
       - name: Clean All Junk,App
         run: |
           docker rmi `docker images -q` || true
-          sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d || true
+          sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d || true
           sudo apt -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell mysql* php* || true
           sudo apt -y autoremove --purge || true
           sudo apt -y autoclean || true
@@ -37,12 +37,11 @@ jobs:
 
       - name: Checkout WORKSPACE
         run: |
-          
           git clone -b old https://${{ secrets.PRIVATEP_TOKEN }}@github.com/ndtai1527/XimiHarem.git
 
       - name: Set up Time
         run: |
-          echo "Setting Vienam timezone"
+          echo "Setting Vietnam timezone"
           sudo timedatectl set-timezone Asia/Ho_Chi_Minh
 
       - name: Install Stuff
@@ -52,15 +51,14 @@ jobs:
           sudo pip3 install ConfigObj
           sudo pip3 install telebot
           sudo pip3 install setuptools
-          
-          
+
       - name: Install OpenJDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-          
-      - name: Giving Premission
+
+      - name: Giving Permission
         run: |
           cd XimiHarem
           sudo chmod 777 -R *
@@ -68,8 +66,7 @@ jobs:
       - name: Working...
         env:
           BASE_URL: ${{ inputs.input_base_url }}
-          PORT_URL : ${{ inputs.input_port_url }}
+          PORT_URL: ${{ inputs.input_port_url }}
         run: |
           cd XimiHarem
           sudo bash build.sh "$BASE_URL" "$PORT_URL"
-      
